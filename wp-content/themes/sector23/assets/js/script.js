@@ -52,8 +52,6 @@ document.body.onload = function() {
             }
         }); }
     }, 600);
-
-}
         
     $(window).scroll(function (){
 
@@ -186,3 +184,5 @@ $('header a:nth-child(4)').click( function() {
 $('header a:nth-child(5)').click( function() {
     $("body,html").animate({ scrollTop: ($('#about').offset().top - 30)}, 1500);
 });
+
+}
