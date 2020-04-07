@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo bloginfo('name'); ?></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri()."/assets/images/favicon.png"; ?>" type="image/png">
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=b9e4d38e-4224-4bdd-b04a-8e04841d3e14" type="text/javascript"></script>
         <script type="text/javascript">
@@ -43,9 +44,26 @@
     <header>
         <img src="<?php echo get_template_directory_uri()."/assets/images/logo.svg"; ?>" id="logo">
         <div id="mobileHeaderName">Sector 23</div>
-        <a href="#">Блог</a>
-        <a href="#">Цены</a>
-        <a href="#">О нас</a>
+        <?php
+            wp_nav_menu( array(
+                                    'theme_location'  => 'top',
+                                    'menu'            => '',
+                                    'container'       => false,
+                                    'container_class' => 'menu-{menu-slug}-container',
+                                    'container_id'    => '',
+                                    'menu_class'      => false,
+                                    'menu_id'         => false,
+                                    'echo'            => true,
+                                    'fallback_cb'     => 'wp_page_menu',
+                                    'before'          => '',
+                                    'after'           => '',
+                                    'link_before'     => '',
+                                    'link_after'      => '',
+                                    'items_wrap'      => '%3$s',
+                                    'depth'           => 0,
+                                    'walker'          => '',
+            ) );
+         ?>
         <span id="mobileMenuBtn">
             <span></span>
             <span></span>
@@ -54,7 +72,24 @@
     </header>
     
     <ul id="mobileMenu">
-        <span><a href="#">О нас</a></span>
-        <span><a href="#">Цены</a></span>
-        <span><a href="#">Блог</a></span>
+                <?php
+            wp_nav_menu( array(
+                                    'theme_location'  => 'top',
+                                    'menu'            => '',
+                                    'container'       => false,
+                                    'container_class' => 'menu-{menu-slug}-container',
+                                    'container_id'    => '',
+                                    'menu_class'      => false,
+                                    'menu_id'         => false,
+                                    'echo'            => true,
+                                    'fallback_cb'     => 'wp_page_menu',
+                                    'before'          => '',
+                                    'after'           => '',
+                                    'link_before'     => '',
+                                    'link_after'      => '',
+                                    'items_wrap'      => '%3$s',
+                                    'depth'           => 0,
+                                    'walker'          => '',
+            ) );
+         ?>
     </ul>

@@ -1,4 +1,5 @@
-
+   <!-- footer
+   ================================================== -->
     <footer>
         <div class="row">
         <p>
@@ -9,8 +10,29 @@
         <div class="row">
         <p>
             <span>Sector23</span>
-            <span>+7-988-401-32-19 <br>
-            +7-918-405-78-44</span>
+            <span>
+                                <?php
+             $posts = get_posts( array(
+    'category'    => get_cat_ID('fone'),
+    'orderby'     => 'date',
+    'meta_key'    => '',
+    'order'       => 'ASC',
+    'meta_value'  =>'',
+    'post_type'   => 'post',
+    'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+) );
+
+foreach( $posts as $post ){
+    setup_postdata($post); ?>
+<?php the_content(); ?><br>
+
+<?php
+
+}
+
+wp_reset_postdata(); // сброс 
+?>
+</span>
         </p>
         </div>
 

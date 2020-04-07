@@ -11,49 +11,42 @@
                 <div class="item"><img src="<?php echo get_template_directory_uri()."/assets/images/img4.jpg"; ?>"></div>
             </div>
         </div>
-    
+    <a name="ceni"></a>
         <div class="row">
-            <h3><r>7</r> Причин, чтобы выбрать Сектор 23</h3>
-        <article>
-            <h4><span>Комфорт и безопасность</span></h4>
-            <img src="<?php echo get_template_directory_uri()."/assets/images/shield.svg"; ?>">
-            <p>Мы предоставляем закрытый и оборудованный полигон в центре Лазаревского, играть на котором комфортно и безопасно</p>
+                        <h3><r>7</r> Причин, чтобы выбрать Сектор 23</h3>
+            <?php
+             $posts = get_posts( array(
+    'numberposts' => 7,
+    'category'    => get_cat_ID('about'),
+    'orderby'     => 'date',
+    'meta_key'    => '',
+    'order'       => 'ASC',
+    'meta_value'  =>'',
+    'post_type'   => 'post',
+    'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+) );
+
+foreach( $posts as $post ){
+    setup_postdata($post); ?>
+            <article>
+            <h4><span><?php the_title(); ?></span></h4>
+            <?php the_post_thumbnail(); ?>
+            <p><?php the_content(); ?></p>
         </article>
-        <article>
-            <h4><span>Зона отдыха</span></h4>
-            <img src="<?php echo get_template_directory_uri()."/assets/images/bbq.svg"; ?>">
-            <p>Помимо игры вы можете воспользоваться зоной отдыха с мангалом и печкой-буржуйкой</p>
-        </article>
-        <article>
-            <h4><span>Разнообразие оборудования</span></h4>
-            <img src="<?php echo get_template_directory_uri()."/assets/images/helmet.svg"; ?>">
-            <p>У нас вы можете сыграть не только в пейнтбол, но и в лазертаг или страйкбол</p>
-        </article>
-        <article>
-            <h4><span>Турниры</h4>
-            <img src="<?php echo get_template_directory_uri()."/assets/images/award.svg"; ?>">
-            <p>Есть возможность организовать турнир для компаний, классов и студенческих групп</p>
-        </article>
-        <article>
-            <h4><span>Интересно всем</span></h4>
-            <img src="<?php echo get_template_directory_uri()."/assets/images/family.svg"; ?>">
-            <p>Активный отдых заинтересует как детей, так и взрослых</p>
-        </article>
-        <article>
-            <h4><span>Организация мероприятий</span></h4>
-            <img src="<?php echo get_template_directory_uri()."/assets/images/event.svg"; ?>">
-            <p>Возможность провести лазертаг на выезде (при наличии подходящих условий)</p>
-        </article>
-        <article>
-            <h4><span>Доступные цены</span></h4>
-            <img src="<?php echo get_template_directory_uri()."/assets/images/offer.svg"; ?>">
-            <p>Стоимость игры от 400 руб (с человека). Для компаний от 10 человек - скидки</p>
-        </article>
+
+<?php
+
+}
+
+wp_reset_postdata(); // сброс 
+?>
+
         </div>
 
         
 
         <div class="row" id="about">
+            <a name="about"></a>
             <center><span>О нас</span></center>
             <div class="half">
                 <h3>Где нас найти</h3>
@@ -65,11 +58,69 @@
                 <h3>Связаться с нами</h3>
                 <p>
                     Телефон: <br>
-                    <a class="tel" href="tel:+79884013219">+7-988-401-32-19</a>
-                    <a class="tel" href="tel:+7918405 7844">+7-918-405-78-44</a>
-                    <a class="icon" href="https://vk.com/23sectorclub"><img src="<?php echo get_template_directory_uri()."/assets/images/vk.svg"; ?>"></a>
-                    <a href="mailto:sector23@inbox.ru" class="icon"><img src="<?php echo get_template_directory_uri()."/assets/images/mail.svg"; ?>"></a>
-                    <a class="icon" href="https://www.instagram.com/sector23club/"><img src="<?php echo get_template_directory_uri()."/assets/images/instagram.svg"; ?>"></a>    
+                    <?php
+             $posts = get_posts( array(
+    'category'    => get_cat_ID('fone'),
+    'orderby'     => 'date',
+    'meta_key'    => '',
+    'order'       => 'ASC',
+    'meta_value'  =>'',
+    'post_type'   => 'post',
+    'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+) );
+
+foreach( $posts as $post ){
+    setup_postdata($post); ?>
+<a class="tel" href="tel:<?php the_title(); ?>"><?php the_title(); ?> </a>
+
+<?php
+
+}
+
+wp_reset_postdata(); // сброс 
+?>
+                    <?php
+             $posts = get_posts( array(
+    'category'    => get_cat_ID('social'),
+    'orderby'     => 'date',
+    'meta_key'    => '',
+    'order'       => 'ASC',
+    'meta_value'  =>'',
+    'post_type'   => 'post',
+    'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+) );
+
+foreach( $posts as $post ){
+    setup_postdata($post); ?>
+<a class="icon" href="<?php the_title(); ?>"><?php the_post_thumbnail(); ?></a>
+
+<?php
+
+}
+
+wp_reset_postdata(); // сброс 
+?>
+                    <?php
+             $posts = get_posts( array(
+    'category'    => get_cat_ID('mail'),
+    'orderby'     => 'date',
+    'meta_key'    => '',
+    'order'       => 'ASC',
+    'meta_value'  =>'',
+    'post_type'   => 'post',
+    'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+) );
+
+foreach( $posts as $post ){
+    setup_postdata($post); ?>
+ <a href="mailto:<?php the_title(); ?>" class="icon"><?php the_post_thumbnail(); ?></a>
+
+<?php
+
+}
+
+wp_reset_postdata(); // сброс 
+?> 
                 </p>
             </div>
         </div>
@@ -79,19 +130,33 @@
 
             <div id="price">
                 <img src="<?php echo get_template_directory_uri()."/assets/images/money.svg"; ?>">
+                           <?php
+             $posts = get_posts( array(
+    'numberposts' => 2,
+    'category'    => get_cat_ID('type'),
+    'orderby'     => 'date',
+    'meta_key'    => '',
+    'order'       => 'ASC',
+    'meta_value'  =>'',
+    'post_type'   => 'post',
+    'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+) );
+
+foreach( $posts as $post ){
+    setup_postdata($post); ?>
                 <div>
-                    <h3>Пейнтбол</h3>
+                    <h3><?php the_title(); ?></h3>
                     <p>
-                        500 руб. - экипировка<br>
-                        2 руб. - шарик с краской
+<?php the_content(); ?>
                     </p>
                 </div>
-                <div>
-                    <h3>Лазертаг</h3>
-                    <p>
-                        400 руб. / час
-                    </p>
-                </div>
+
+<?php
+
+}
+
+wp_reset_postdata(); // сброс 
+?>
             </div>
         </div>
 
@@ -137,7 +202,7 @@ function vivCOL($result_set){
 for($i=0;$i<$colvo;$i++){if($all[$i][4]=='true')
                 echo"
                     <div div class=\"item\">
-                        <img src=\"./assets/images/comm/".$all[$i][5]."\" alt=\"\">
+                        <img class = 'comm' src=\"".get_template_directory_uri()."/assets/images/comm/".$all[$i][5]."\" alt=\"\">
                         <h3>".$all[$i][1]."</h3>
                         <p>".$all[$i][2]."</p>
                     </div>

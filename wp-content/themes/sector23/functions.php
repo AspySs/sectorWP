@@ -20,13 +20,12 @@ wp_enqueue_style('owl.theme.default.min', get_template_directory_uri()."/assets/
 }
 function footer_scripts(){
 
-	wp_enqueue_script('jquery', get_template_directory_uri()."/assets/js/jquery.js"); // подключаем скрипты (в футер)
+	 // подключаем скрипты (в футер)
 	wp_enqueue_script('owl.carousel.min', get_template_directory_uri()."/assets/js/owl.carousel.min.js");
 	wp_enqueue_script('script', get_template_directory_uri()."/assets/js/script.js");
 }
 function mymenu(){
 	register_nav_menu( 'top', 'Меню в шапке' );//регистрирует наше меню
-	register_nav_menu( 'foot', 'Меню в конце' );//регистрирует наше меню
 	add_theme_support('title-tag'); //  делаем автоматическуб генерацию титлов на всех страницах
 	add_theme_support( 'post-thumbnails', array( 'post' ) ); // дает возможность пихать превью пики к постам!!
 	add_image_size( 'post_thumb', 1300, 500, true); // регистрирует новый размер картинок!
@@ -34,10 +33,38 @@ function mymenu(){
 	add_filter( 'excerpt_more', 'new_excerpt_more' );////  регистрируем фильтр для красивого отображения в постах кнопки читать дальше
 	add_filter('navigation_markup_template', 'my_navigation_template', 10, 2 ); // фильтр, убирающий слово НАВИГАЦИЯ ПО САЙТУ перед вкладками
 	add_filter( 'document_title_separator', 'filter_title' );//регаю фильтр для изменения вывода тайтла на страницах
+	
+add_filter( 'wp_check_filetype_and_ext', 'filter_function_name_497', 10, 4 );
+add_filter( 'upload_mimes', 'upload_allow_types' );
 }
 	function new_excerpt_more( $more ){
 	global $post;
 	return '<a href="'. get_permalink($post) . '">  Читать дальше...</a>'; // фильтр для красивого отображения в постах кнопки читать дальше
+}
+function upload_allow_types( $mimes ) {
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+function filter_function_name_497( $type_and_ext, $file, $filename, $mimes ){
+
+	// загружается файл с расширением .svg
+	if( '.svg' === strtolower( substr($filename, -4) ) ){
+
+		$filesize = filesize( $file ) / 1024; // КБ
+
+		// разрешим
+		if( $filesize < 50 && current_user_can('manage_options') ){
+			$type_and_ext['ext']  = 'svg';
+			$type_and_ext['type'] = 'image/svg+xml';
+		}
+		// запретим
+		else {
+			$type_and_ext['ext'] = $type_and_ext['type'] = false;
+		}
+
+	}
+
+	return $type_and_ext;
 }
 
 function my_navigation_template( $template, $class ){
