@@ -101,7 +101,7 @@ $('.gallery').owlCarousel({
     margin:10,
     dots:true,
     nav:true,
-    navText: ['<img src="./img/leftArrow.svg">','<img src="./img/rightArrow.svg">'],
+    navText: ['<img src="wp-content/themes/sector23/assets/images/leftArrow.svg">','<img src="wp-content/themes/sector23/assets/images/rightArrow.svg">'],
     responsive:{
         0:{
             items:1,
@@ -127,7 +127,7 @@ $('.comments').owlCarousel({
     margin:10,
     dots:true,
     nav:true,
-    navText: ['<img src="./img/leftArrow.svg">','<img src="./img/rightArrow.svg">'],
+    navText: ['<img src="wp-content/themes/sector23/assets/images/leftArrow.svg">','<img src="wp-content/themes/sector23/assets/images/rightArrow.svg">'],
     responsive:{
         0:{
             items:1,

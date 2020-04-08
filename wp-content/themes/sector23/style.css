@@ -320,8 +320,8 @@ center span {
 
 .comments .item img {
     display: block;
-    width: 160px;
-    height: 160px;
+    width: 160px !important;
+    height: 160px !important; 
     border-radius: 40%;
     margin-left: 60px;
     float: left;
