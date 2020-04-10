@@ -25,6 +25,7 @@ function footer_scripts(){
 	wp_enqueue_script('script', get_template_directory_uri()."/assets/js/script.js");
 }
 function mymenu(){
+	add_action('my_action', 'funct_name'); // добавляем СВОЕ ДЕЙСТВИЕ которого не существует в дефолтном вордпрессе (запускается вручную через do_action('my_action');)
 	register_nav_menu( 'top', 'Меню в шапке' );//регистрирует наше меню
 	add_theme_support('title-tag'); //  делаем автоматическуб генерацию титлов на всех страницах
 	add_theme_support( 'post-thumbnails', array( 'post' ) ); // дает возможность пихать превью пики к постам!!
@@ -36,6 +37,9 @@ function mymenu(){
 	
 add_filter( 'wp_check_filetype_and_ext', 'filter_function_name_497', 10, 4 );
 add_filter( 'upload_mimes', 'upload_allow_types' );
+}
+function funct_name(){
+	wp_enqueue_style('style-dist', get_template_directory_uri()."/assets/css/style/style-dist.css");
 }
 	function new_excerpt_more( $more ){
 	global $post;
